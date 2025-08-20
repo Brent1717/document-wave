@@ -9,20 +9,20 @@ const inter = Inter({ subsets: ["latin"] });
 
 const data = {
   description:
-    "Papermark is an open-source document sharing infrastructure. Free alternative to Docsend with custom domain. Manage secure document sharing with real-time analytics.",
-  title: "Papermark | The Open Source DocSend Alternative",
+    "DocumentWave is the intelligent document sharing platform that revolutionizes how teams collaborate. Enterprise-grade security, powerful analytics, and seamless workflows for modern businesses.",
+  title: "DocumentWave | Intelligent Document Sharing Platform",
   url: "/",
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.papermark.com"),
+  metadataBase: new URL("https://www.documentwave.app"),
   title: data.title,
   description: data.description,
   openGraph: {
     title: data.title,
     description: data.description,
     url: data.url,
-    siteName: "Papermark",
+    siteName: "DocumentWave",
     images: [
       {
         url: "/_static/meta-image.png",
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: data.title,
     description: data.description,
-    creator: "@papermarkio",
+    creator: "@documentwave",
     images: ["/_static/meta-image.png"],
   },
 };
@@ -51,7 +51,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <PlausibleProvider
-          domain="papermark.io"
+          domain="documentwave.app"
           enabled={process.env.NEXT_PUBLIC_VERCEL_ENV === "production"}
         />
       </head>

@@ -111,7 +111,7 @@ export default function DenyListSection({
               className="focus:ring-inset"
               rows={5}
               placeholder={`Enter blocked emails/domains, one per line, e.g.
-marc@papermark.io
+hello@documentwave.app
 @example.org`}
               value={denyListInput}
               onChange={handleDenyListChange}

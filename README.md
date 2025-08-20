@@ -1,37 +1,37 @@
 <div align="center">
-  <h1 align="center">Papermark</h1>
-  <h3>The open-source DocSend alternative.</h3>
-
-<a target="_blank" href="https://www.producthunt.com/posts/papermark-3?utm_source=badge-top-post-badge&amp;utm_medium=badge&amp;utm_souce=badge-papermark"><img src="https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=411605&amp;theme=light&amp;period=daily" alt="Papermark - The open-source DocSend alternative | Product Hunt" style="width:250px;height:40px"></a>
-
+  <h1 align="center">DocumentWave</h1>
+  <h3>The intelligent document sharing platform.</h3>
 </div>
 
 <div align="center">
-  <a href="https://www.papermark.com">papermark.com</a>
+  <a href="https://www.documentwave.app">documentwave.app</a>
 </div>
 
 <br/>
 
 <div align="center">
-  <a href="https://github.com/mfts/papermark/stargazers"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/mfts/papermark"></a>
-  <a href="https://twitter.com/papermarkio"><img alt="Twitter Follow" src="https://img.shields.io/twitter/follow/papermarkio"></a>
-  <a href="https://github.com/mfts/papermark/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/badge/license-AGPLv3-purple"></a>
+  <a href="https://github.com/yourusername/documentwave/stargazers"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/yourusername/documentwave"></a>
+  <a href="https://twitter.com/documentwave"><img alt="Twitter Follow" src="https://img.shields.io/twitter/follow/documentwave"></a>
+  <a href="https://github.com/yourusername/documentwave/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/badge/license-AGPLv3-blue"></a>
 </div>
 
 <br/>
 
-Papermark is the open-source document-sharing alternative to DocSend, featuring built-in analytics and custom domains.
+DocumentWave is a powerful, intelligent document-sharing platform that revolutionizes how teams collaborate and share sensitive documents. Built for modern businesses, it combines enterprise-grade security with intuitive analytics and seamless workflows.
 
 ## Features
 
-- **Shareable Links:** Share your documents securely by sending a custom link.
-- **Custom Branding:** Add a custom domain and your own branding.
-- **Analytics:** Gain insights through document tracking and soon page-by-page analytics.
-- **Self-hosted, Open-source:** Host it yourself and customize it as needed.
+- **🔗 Smart Document Sharing:** Create secure, trackable links with advanced permissions and access controls.
+- **📊 Intelligent Analytics:** Deep insights into document engagement, viewer behavior, and performance metrics.
+- **🎨 Custom Branding:** Complete white-label experience with custom domains, logos, and brand colors.
+- **🏢 Enterprise Data Rooms:** Secure virtual data rooms for due diligence, M&A, and sensitive document sharing.
+- **🔒 Advanced Security:** Email verification, password protection, dynamic watermarks, and NDA agreements.
+- **👥 Team Collaboration:** Multi-user workspaces with granular role-based permissions and access controls.
+- **🚀 Self-hosted & Open-source:** Full control over your data with enterprise-grade hosting options.
 
 ## Demo
 
-![Papermark Welcome GIF](.github/images/papermark-welcome.gif)
+![DocumentWave Welcome GIF](.github/images/documentwave-welcome.gif)
 
 ## Tech Stack
 
@@ -51,7 +51,7 @@ Papermark is the open-source document-sharing alternative to DocSend, featuring 
 
 ### Prerequisites
 
-Here's what you need to run Papermark:
+Here's what you need to run DocumentWave:
 
 - Node.js (version >= 18.17.0)
 - PostgreSQL Database
@@ -61,8 +61,8 @@ Here's what you need to run Papermark:
 ### 1. Clone the repository
 
 ```shell
-git clone https://github.com/mfts/papermark.git
-cd papermark
+git clone https://github.com/yourusername/documentwave.git
+cd documentwave
 ```
 
 ### 2. Install npm dependencies
@@ -119,16 +119,20 @@ To prepare the Tinybird database, follow these steps:
 pipenv shell
 ## start: pkgx-specific
 cd ..
-cd papermark
+cd documentwave
 ## end: pkgx-specific
 pipenv update tinybird-cli
 ```
 
 ## Contributing
 
-Papermark is an open-source project, and we welcome contributions from the community.
+DocumentWave is an open-source project, and we welcome contributions from the community.
 
 If you'd like to contribute, please fork the repository and make any changes you'd like. Pull requests are warmly welcome.
+
+## Attribution
+
+DocumentWave is built upon the solid foundation of [Papermark](https://github.com/mfts/papermark), an excellent open-source DocSend alternative. We extend our gratitude to the original creators and contributors for their innovative work.
 
 ### Our Contributors ✨
 
