@@ -46,7 +46,7 @@ export default function App({
         />
         <meta
           property="og:image"
-          content="https://www.papermark.com/_static/meta-image.png"
+          content="https://www.documentwave.app/_static/meta-image.png"
           key="og-image"
         />
         <meta
@@ -66,7 +66,7 @@ export default function App({
         />
         <meta
           name="twitter:image"
-          content="https://www.papermark.com/_static/meta-image.png"
+          content="https://www.documentwave.app/_static/meta-image.png"
           key="tw-image"
         />
         <link rel="icon" href="/favicon.ico" key="favicon" />
@@ -75,7 +75,7 @@ export default function App({
         <PostHogCustomProvider>
           <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
             <PlausibleProvider
-              domain="papermark.io"
+              domain="documentwave.app"
               enabled={process.env.NEXT_PUBLIC_VERCEL_ENV === "production"}
             >
               <NuqsAdapter>
