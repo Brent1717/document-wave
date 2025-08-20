@@ -2,7 +2,7 @@ import { z } from "zod";
 
 import { verifyQstashSignature } from "@/lib/cron/verify-qstash";
 import prisma from "@/lib/prisma";
-import { recordWebhookEvent } from "@/lib/tinybird/publish";
+import { safeRecordWebhookEvent } from "@/lib/tinybird/publish";
 import { getSearchParams } from "@/lib/utils/get-search-params";
 import { WEBHOOK_TRIGGERS } from "@/lib/webhook/constants";
 import {
@@ -44,7 +44,7 @@ export const POST = async (req: Request) => {
   const response = Buffer.from(body, "base64").toString("utf-8");
   const isFailed = status >= 400 || status === -1;
 
-  await recordWebhookEvent({
+  await safeRecordWebhookEvent({
     url,
     event,
     event_id: eventId,

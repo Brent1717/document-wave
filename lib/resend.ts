@@ -46,21 +46,21 @@ export const sendEmail = async ({
   const fromAddress =
     from ??
     (marketing
-      ? "DocumentWave Team <hello@documentwave.app>"
+      ? "DocumentWave Team <onboarding@resend.dev>"
       : system
-        ? "DocumentWave <system@documentwave.app>"
+        ? "DocumentWave <system@resend.dev>"
         : verify
-          ? "DocumentWave <verify@documentwave.app>"
+          ? "DocumentWave <verify@resend.dev>"
           : !!scheduledAt
-            ? "DocumentWave <hello@documentwave.app>"
-            : "DocumentWave Team <hello@documentwave.app>");
+            ? "DocumentWave <hello@resend.dev>"
+            : "DocumentWave Team <hello@resend.dev>");
 
   try {
     const { data, error } = await resend.emails.send({
       from: fromAddress,
       to: test ? "delivered@resend.dev" : to,
       cc: cc,
-      replyTo: marketing ? "hello@documentwave.app" : replyTo,
+      replyTo: marketing ? "hello@resend.dev" : replyTo,
       subject,
       react,
       scheduledAt,

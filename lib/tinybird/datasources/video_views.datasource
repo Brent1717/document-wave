@@ -1,7 +1,7 @@
 VERSION 1
 
 DESCRIPTION >
-  Video views are events when a user views a video
+  Video views are events when a user views a video document
 
 SCHEMA >
   `timestamp` DateTime64(3) `json:$.timestamp`,

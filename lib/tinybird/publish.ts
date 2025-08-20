@@ -4,9 +4,25 @@ import { z } from "zod";
 import { VIDEO_EVENT_TYPES } from "../constants";
 import { WEBHOOK_TRIGGERS } from "../webhook/constants";
 
-const tb = new Tinybird({ token: process.env.TINYBIRD_TOKEN! });
+// Only create Tinybird client if token is available
+const tb = process.env.TINYBIRD_TOKEN 
+  ? new Tinybird({ token: process.env.TINYBIRD_TOKEN })
+  : null;
 
-export const publishPageView = tb.buildIngestEndpoint({
+// Helper function to safely call Tinybird endpoints
+const safeTinybirdCall = async (endpoint: any, data: any) => {
+  if (!tb) {
+    console.warn("Tinybird token not configured, skipping analytics");
+    return;
+  }
+  try {
+    await endpoint(data);
+  } catch (error) {
+    console.error("Tinybird analytics error:", error);
+  }
+};
+
+export const publishPageView = tb?.buildIngestEndpoint({
   datasource: "page_views__v3",
   event: z.object({
     id: z.string(),
@@ -40,7 +56,7 @@ export const publishPageView = tb.buildIngestEndpoint({
   }),
 });
 
-export const recordWebhookEvent = tb.buildIngestEndpoint({
+export const recordWebhookEvent = tb?.buildIngestEndpoint({
   datasource: "webhook_events__v1",
   event: z.object({
     event_id: z.string(),
@@ -54,7 +70,7 @@ export const recordWebhookEvent = tb.buildIngestEndpoint({
   }),
 });
 
-export const recordVideoView = tb.buildIngestEndpoint({
+export const recordVideoView = tb?.buildIngestEndpoint({
   datasource: "video_views__v1",
   event: z.object({
     timestamp: z.string(),
@@ -96,25 +112,8 @@ export const recordVideoView = tb.buildIngestEndpoint({
 });
 
 // Click event tracking when user clicks a link within a document
-export const recordClickEvent = tb.buildIngestEndpoint({
+export const recordClickEvent = tb?.buildIngestEndpoint({
   datasource: "click_events__v1",
-  event: z.object({
-    timestamp: z.string(),
-    event_id: z.string(),
-    session_id: z.string(),
-    link_id: z.string(),
-    document_id: z.string(),
-    view_id: z.string(),
-    page_number: z.string(),
-    href: z.string(),
-    version_number: z.number(),
-    dataroom_id: z.string().nullable(),
-  }),
-});
-
-// Event track when a visitor opens a link
-export const recordLinkViewTB = tb.buildIngestEndpoint({
-  datasource: "pm_click_events__v1",
   event: z.object({
     timestamp: z.string(),
     click_id: z.string(),
@@ -145,3 +144,9 @@ export const recordLinkViewTB = tb.buildIngestEndpoint({
     ip_address: z.string().nullable(),
   }),
 });
+
+// Safe wrapper functions
+export const safePublishPageView = (data: any) => safeTinybirdCall(publishPageView, data);
+export const safeRecordWebhookEvent = (data: any) => safeTinybirdCall(recordWebhookEvent, data);
+export const safeRecordVideoView = (data: any) => safeTinybirdCall(recordVideoView, data);
+export const safeRecordClickEvent = (data: any) => safeTinybirdCall(recordClickEvent, data);

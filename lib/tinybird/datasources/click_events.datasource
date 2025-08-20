@@ -1,7 +1,7 @@
 VERSION 1
 
 DESCRIPTION >
-    Click events track when a user clicks a link within a document
+  Click events are events when a user clicks a link within a document
 
 SCHEMA >
     `timestamp` DateTime64(3) `json:$.timestamp`,
