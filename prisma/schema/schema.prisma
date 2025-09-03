@@ -62,7 +62,7 @@ model User {
   // conversation
   participatedConversations ConversationParticipant[]
   messages                  Message[]
-  
+
   // FAQ system
   publishedFaqItems DataroomFaqItem[]
 }
