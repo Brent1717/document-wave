@@ -14,17 +14,21 @@ const nextConfig = {
       : undefined,
   async redirects() {
     return [
-      {
-        source: "/",
-        destination: "/dashboard",
-        permanent: false,
-        has: [
-          {
-            type: "host",
-            value: process.env.NEXT_PUBLIC_APP_BASE_HOST,
-          },
-        ],
-      },
+      ...(process.env.NEXT_PUBLIC_APP_BASE_HOST
+        ? [
+            {
+              source: "/",
+              destination: "/dashboard",
+              permanent: false,
+              has: [
+                {
+                  type: "host",
+                  value: process.env.NEXT_PUBLIC_APP_BASE_HOST,
+                },
+              ],
+            },
+          ]
+        : []),
       {
         source: "/view/cm2xiaxzo000d147xszm9q72o",
         destination: "/view/cm34cqqqx000212oekj9upn8o",
@@ -117,20 +121,25 @@ const nextConfig = {
         ],
       },
       {
-        source: "/services/:path*",
-        has: [
-          {
-            type: "host",
-            value: process.env.NEXT_PUBLIC_WEBHOOK_BASE_HOST,
-          },
-        ],
-        headers: [
-          {
-            key: "X-Robots-Tag",
-            value: "noindex",
-          },
-        ],
-      },
+        ...(process.env.NEXT_PUBLIC_WEBHOOK_BASE_HOST
+          ? [
+              {
+                source: "/services/:path*",
+                has: [
+                  {
+                    type: "host",
+                    value: process.env.NEXT_PUBLIC_WEBHOOK_BASE_HOST,
+                  },
+                ],
+                headers: [
+                  {
+                    key: "X-Robots-Tag",
+                    value: "noindex",
+                  },
+                ],
+              },
+            ]
+          : []),
       {
         source: "/api/webhooks/services/:path*",
         headers: [
