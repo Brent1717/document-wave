@@ -120,26 +120,25 @@ const nextConfig = {
           },
         ],
       },
-      {
-        ...(process.env.NEXT_PUBLIC_WEBHOOK_BASE_HOST
-          ? [
-              {
-                source: "/services/:path*",
-                has: [
-                  {
-                    type: "host",
-                    value: process.env.NEXT_PUBLIC_WEBHOOK_BASE_HOST,
-                  },
-                ],
-                headers: [
-                  {
-                    key: "X-Robots-Tag",
-                    value: "noindex",
-                  },
-                ],
-              },
-            ]
-          : []),
+      ...(process.env.NEXT_PUBLIC_WEBHOOK_BASE_HOST
+        ? [
+            {
+              source: "/services/:path*",
+              has: [
+                {
+                  type: "host",
+                  value: process.env.NEXT_PUBLIC_WEBHOOK_BASE_HOST,
+                },
+              ],
+              headers: [
+                {
+                  key: "X-Robots-Tag",
+                  value: "noindex",
+                },
+              ],
+            },
+          ]
+        : []),
       {
         source: "/api/webhooks/services/:path*",
         headers: [
