@@ -215,3 +215,108 @@ export const getClickEventsByView = tb?.buildPipe({
     href: z.string(),
   }),
 });
+
+// Safe wrapper functions for pipes
+export const safeGetTotalAvgPageDuration = async (params: any) => {
+  if (!getTotalAvgPageDuration) {
+    console.warn("Tinybird token not configured, skipping analytics");
+    return { data: [] };
+  }
+  return await getTotalAvgPageDuration(params);
+};
+
+export const safeGetViewPageDuration = async (params: any) => {
+  if (!getViewPageDuration) {
+    console.warn("Tinybird token not configured, skipping analytics");
+    return { data: [] };
+  }
+  return await getViewPageDuration(params);
+};
+
+export const safeGetTotalDocumentDuration = async (params: any) => {
+  if (!getTotalDocumentDuration) {
+    console.warn("Tinybird token not configured, skipping analytics");
+    return { data: [] };
+  }
+  return await getTotalDocumentDuration(params);
+};
+
+export const safeGetTotalLinkDuration = async (params: any) => {
+  if (!getTotalLinkDuration) {
+    console.warn("Tinybird token not configured, skipping analytics");
+    return { data: [] };
+  }
+  return await getTotalLinkDuration(params);
+};
+
+export const safeGetTotalViewerDuration = async (params: any) => {
+  if (!getTotalViewerDuration) {
+    console.warn("Tinybird token not configured, skipping analytics");
+    return { data: [] };
+  }
+  return await getTotalViewerDuration(params);
+};
+
+export const safeGetViewUserAgent_v2 = async (params: any) => {
+  if (!getViewUserAgent_v2) {
+    console.warn("Tinybird token not configured, skipping analytics");
+    return { data: [] };
+  }
+  return await getViewUserAgent_v2(params);
+};
+
+export const safeGetViewUserAgent = async (params: any) => {
+  if (!getViewUserAgent) {
+    console.warn("Tinybird token not configured, skipping analytics");
+    return { data: [] };
+  }
+  return await getViewUserAgent(params);
+};
+
+export const safeGetTotalDataroomDuration = async (params: any) => {
+  if (!getTotalDataroomDuration) {
+    console.warn("Tinybird token not configured, skipping analytics");
+    return { data: [] };
+  }
+  return await getTotalDataroomDuration(params);
+};
+
+export const safeGetDocumentDurationPerViewer = async (params: any) => {
+  if (!getDocumentDurationPerViewer) {
+    console.warn("Tinybird token not configured, skipping analytics");
+    return { data: [] };
+  }
+  return await getDocumentDurationPerViewer(params);
+};
+
+export const safeGetWebhookEvents = async (params: any) => {
+  if (!getWebhookEvents) {
+    console.warn("Tinybird token not configured, skipping analytics");
+    return { data: [] };
+  }
+  return await getWebhookEvents(params);
+};
+
+export const safeGetVideoEventsByDocument = async (params: any) => {
+  if (!getVideoEventsByDocument) {
+    console.warn("Tinybird token not configured, skipping analytics");
+    return { data: [] };
+  }
+  return await getVideoEventsByDocument(params);
+};
+
+export const safeGetVideoEventsByView = async (params: any) => {
+  if (!getVideoEventsByView) {
+    console.warn("Tinybird token not configured, skipping analytics");
+    return { data: [] };
+  }
+  return await getVideoEventsByView(params);
+};
+
+export const safeGetClickEventsByView = async (params: any) => {
+  if (!getClickEventsByView) {
+    console.warn("Tinybird token not configured, skipping analytics");
+    return { data: [] };
+  }
+  return await getClickEventsByView(params);
+};

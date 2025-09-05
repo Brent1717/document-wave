@@ -145,6 +145,9 @@ export const recordClickEvent = tb?.buildIngestEndpoint({
   }),
 });
 
+// Link view tracking (alias for recordClickEvent)
+export const recordLinkViewTB = recordClickEvent;
+
 // Safe wrapper functions
 export const safePublishPageView = (data: any) => safeTinybirdCall(publishPageView, data);
 export const safeRecordWebhookEvent = (data: any) => safeTinybirdCall(recordWebhookEvent, data);

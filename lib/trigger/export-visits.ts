@@ -6,9 +6,9 @@ import { sendExportReadyEmail } from "@/lib/emails/send-export-ready-email";
 import prisma from "@/lib/prisma";
 import { jobStore } from "@/lib/redis-job-store";
 import {
-  getViewPageDuration,
-  getViewUserAgent,
-  getViewUserAgent_v2,
+  safeGetViewPageDuration,
+  safeGetViewUserAgent,
+  safeGetViewUserAgent_v2,
 } from "@/lib/tinybird";
 
 // Helper function to properly escape CSV fields
@@ -296,19 +296,19 @@ async function exportDocumentVisits(
     // Rate-limited calls to tinybird
     const [duration, userAgentData] = await Promise.all([
       tinybirdLimiter.schedule(() =>
-        getViewPageDuration({
+        safeGetViewPageDuration({
           documentId: docId,
           viewId: view.id,
           since: 0,
         }),
       ),
       tinybirdLimiter.schedule(async () => {
-        const result = await getViewUserAgent({
+        const result = await safeGetViewUserAgent({
           viewId: view.id,
         });
 
-        if (!result || result.rows === 0) {
-          return getViewUserAgent_v2({
+        if (!result || !result.data || result.data.length === 0) {
+          return safeGetViewUserAgent_v2({
             documentId: docId,
             viewId: view.id,
             since: 0,
@@ -601,7 +601,7 @@ async function exportDataroomVisits(
       );
 
       const duration = await tinybirdLimiter.schedule(() =>
-        getViewPageDuration({
+        safeGetViewPageDuration({
           documentId: docView.document?.id || "null",
           viewId: docView.id,
           since: 0,
@@ -663,12 +663,12 @@ async function exportDataroomVisits(
   const userAgentDataMap = new Map();
   for (const docView of documentViews) {
     const userAgentData = await tinybirdLimiter.schedule(async () => {
-      const result = await getViewUserAgent({
+      const result = await safeGetViewUserAgent({
         viewId: docView.id,
       });
 
-      if (!result || result.rows === 0) {
-        return getViewUserAgent_v2({
+      if (!result || !result.data || result.data.length === 0) {
+        return safeGetViewUserAgent_v2({
           documentId: docView.document?.id || "null",
           viewId: docView.id,
           since: 0,
