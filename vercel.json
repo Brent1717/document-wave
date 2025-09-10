@@ -6,5 +6,12 @@
     "pages/api/mupdf/annotate-document.ts": {
       "memory": 2048
     }
-  }
+  },
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "https://documentwave.com",
+      "permanent": true
+    }
+  ]
 }

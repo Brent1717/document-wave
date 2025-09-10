@@ -6,7 +6,7 @@ export default async function DomainMiddleware(req: NextRequest) {
   const path = req.nextUrl.pathname;
   const host = req.headers.get("host");
 
-  // If it's the root path, redirect to papermark.com/home
+  // If it's the root path, redirect to marketing site
   if (path === "/") {
     if (host === "guide.permithealth.com") {
       return NextResponse.redirect(
@@ -26,8 +26,15 @@ export default async function DomainMiddleware(req: NextRequest) {
       );
     }
 
+    // Redirect app.documentwave.com to marketing site
+    if (host === "app.documentwave.com") {
+      return NextResponse.redirect(
+        new URL("https://documentwave.com", req.url),
+      );
+    }
+
     return NextResponse.redirect(
-      new URL("https://www.papermark.com/home", req.url),
+      new URL("https://documentwave.com", req.url),
     );
   }
 
@@ -47,7 +54,7 @@ export default async function DomainMiddleware(req: NextRequest) {
     headers: {
       "X-Robots-Tag": "noindex",
       "X-Powered-By":
-        "Papermark.io - Document sharing infrastructure for the modern web",
+        "DocumentWave - Intelligent document sharing platform",
     },
   });
 }

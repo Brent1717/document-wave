@@ -24,7 +24,7 @@ function getMainDomainUrl(): string {
   if (process.env.NODE_ENV === "development") {
     return process.env.NEXTAUTH_URL || "http://localhost:3000";
   }
-  return process.env.NEXTAUTH_URL || "https://app.documentwave.app";
+  return process.env.NEXTAUTH_URL || "https://app.documentwave.com";
 }
 
 // This function can run for a maximum of 180 seconds
